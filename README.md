@@ -12,7 +12,7 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 - An ESP32-based display board at the counter shows "Token 42 – Now Serving" (prototyped in Tinkercad with an Arduino Uno + 16x2 LCD)
 
 ## Demo
-- Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
+- Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO-magnificent-bruticus?sharecode=oRrtRlCo5V0DvYDCndqisC1yqN00DO_viC3OwHGKJ5o
 
 - YouTube demo video: [add link before submission]
 
