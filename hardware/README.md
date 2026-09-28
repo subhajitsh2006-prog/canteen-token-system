@@ -1,6 +1,5 @@
 # Hardware Simulation
-
-Tinkercad circuit link: PASTE-YOUR-TINKERCAD-LINK-HERE
+https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
 
 ## Components
 - Arduino Uno
