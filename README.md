@@ -9,7 +9,7 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 - A web app lets users view a categorized menu (Snacks, Meals, Beverages,etc.) with live stock status
 - Users book a virtual token and see a predicted serving time
 - Staff advance the "Now Serving" token and toggle item stock in real time
-- A physical ESP32 + LED display board (simulated in Tinkercad) shows "Token 42 – Now Serving"
+- An ESP32-based display board at the counter shows "Token 42 – Now Serving" (prototyped in Tinkercad with an Arduino Uno + 16x2 LCD)
 
 ## Tech Stack
 - **Frontend:** HTML5, CSS3, JavaScript (ES6)
@@ -28,3 +28,12 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 - Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
 
 - YouTube demo video: [add link before submission]
+
+## Project Structure
+- app/index.html - customer page (menu, get token, now serving)
+- app/staff.html - staff panel (next token, reset, stock control)
+- hardware/circuit_code.ino - Arduino code for the LCD display
+- hardware/README.md - circuit details and Tinkercad link
+
+## How to Run
+Download the repo and open app/index.html and app/staff.html in a browser. Both connect to our Firebase Realtime Database and update live.
