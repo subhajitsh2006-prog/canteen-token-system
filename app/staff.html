@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Panel</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 520px; margin: 20px auto; padding: 10px; color: #1d2b24; }
+  h2 { margin-bottom: 4px; }
+  #nowServing { font-size: 1.6rem; font-weight: 700; margin: 8px 0 4px; }
+  #queueInfo { color: #6b7a72; margin: 0 0 12px; }
+  #message { color: #b3402f; min-height: 1.4em; margin: 6px 0; }
+  button { padding: 10px 20px; font-size: 16px; margin: 5px 5px 5px 0; cursor: pointer; border: 0; border-radius: 8px; background: #1f6f4a; color: #fff; font-weight: 600; }
+  button.secondary { background: #e6ebe8; color: #1d2b24; }
+  button:focus-visible { outline: 3px solid #9bd3b6; outline-offset: 2px; }
+  .category { font-weight: 700; margin-top: 16px; padding-bottom: 4px; border-bottom: 2px solid #1f6f4a; }
+  .item { display: flex; justify-content: space-between; align-items: center; padding: 8px 2px; border-bottom: 1px solid #ddd; }
+  .item label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+</style>
+</head>
+
+<body>
+
+<h2>Staff Panel</h2>
+
+<p id="nowServing">Now Serving: --</p>
+<p id="queueInfo"></p>
+<p id="message"></p>
+
+<button onclick="nextToken()">Next Token</button>
+<button class="secondary" onclick="resetTokens()">Reset Queue</button>
+
+<h3>Menu Stock Control</h3>
+
+<div id="menuContainer">Loading...</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getDatabase, ref, onValue, get, set, runTransaction } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+// Firebase project: canteen-token-system-63b9e (the team's shared database)
+const firebaseConfig = {
+  apiKey: "AIzaSyBTdRI4iiXFJ7vls4X7i-5AC8mc5fcFJu4",
+  authDomain: "canteen-token-system-63b9e.firebaseapp.com",
+  databaseURL: "https://canteen-token-system-63b9e-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "canteen-token-system-63b9e",
+  storageBucket: "canteen-token-system-63b9e.firebasestorage.app",
+  messagingSenderId: "206942062522",
+  appId: "1:206942062522:web:3e7f95177c175678e43f83"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const currentServingRef = ref(db, "tokens/currentServing");
+const lastIssuedRef = ref(db, "tokens/lastIssued");
+const messageEl = document.getElementById("message");
+
+// ---- Live queue status ----
+let currentServing = 0;
+let lastIssued = 0;
+
+function renderQueue() {
+    document.getElementById("nowServing").textContent = "Now Serving: " + currentServing;
+    const waiting = Math.max(lastIssued - currentServing, 0);
+    document.getElementById("queueInfo").textContent =
+        "Tokens issued: " + lastIssued + " | Waiting: " + waiting;
+}
+
+onValue(currentServingRef, (snapshot) => {
+    currentServing = snapshot.val() || 0;
+    renderQueue();
+});
+
+onValue(lastIssuedRef, (snapshot) => {
+    lastIssued = snapshot.val() || 0;
+    renderQueue();
+});
+
+// ---- Advance the queue (never past the last issued token) ----
+window.nextToken = async function () {
+    messageEl.textContent = "";
+    const issuedSnap = await get(lastIssuedRef);
+    const issued = issuedSnap.val() || 0;
+    const servingSnap = await get(currentServingRef);
+
+    if ((servingSnap.val() || 0) >= issued) {
+        messageEl.textContent = "No one is waiting. Every issued token has been served.";
+        return;
+    }
+
+    await runTransaction(currentServingRef, (current) => {
+        const now = current || 0;
+        return now < issued ? now + 1 : now;
+    });
+};
+
+window.resetTokens = async function () {
+    if (!confirm("Reset the whole queue back to 0? This cannot be undone.")) return;
+    messageEl.textContent = "";
+    await set(currentServingRef, 0);
+    await set(lastIssuedRef, 0);
+};
+
+// ---- Menu stock toggles, grouped by category ----
+const menuRef = ref(db, "menu");
+
+onValue(menuRef, (snapshot) => {
+    const items = snapshot.val();
+    const container = document.getElementById("menuContainer");
+    container.innerHTML = "";
+
+    if (!items) {
+        container.textContent = "No menu items yet.";
+        return;
+    }
+
+    const categories = {};
+    for (const key in items) {
+        const item = items[key];
+        if (!categories[item.category]) categories[item.category] = [];
+        categories[item.category].push({ key, item });
+    }
+
+    for (const cat in categories) {
+        const catDiv = document.createElement("div");
+        catDiv.className = "category";
+        catDiv.textContent = cat;
+        container.appendChild(catDiv);
+
+        categories[cat].forEach(({ key, item }) => {
+            const row = document.createElement("div");
+            row.className = "item";
+            row.innerHTML =
+                `<span>${item.name}</span>
+                <label>
+                <input type="checkbox"
+                ${item.inStock ? "checked" : ""}
+                onchange="toggleStock('${key}', this.checked)">
+                In stock
+                </label>`;
+            container.appendChild(row);
+        });
+    }
+});
+
+window.toggleStock = async function (itemKey, value) {
+    await set(ref(db, "menu/" + itemKey + "/inStock"), value);
+};
+
+</script>
+
+</body>
+</html>
