@@ -11,6 +11,15 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 - Staff advance the "Now Serving" token and toggle item stock in real time
 - An ESP32-based display board at the counter shows "Token 42 – Now Serving" (prototyped in Tinkercad with an Arduino Uno + 16x2 LCD)
 
+## Demo
+- Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
+
+- YouTube demo video: [add link before submission]
+
+- Live app: https://subhajitsh2006-prog.github.io/canteen-token-system/app/index.html
+  
+- Staff panel: https://subhajitsh2006-prog.github.io/canteen-token-system/app/staff.html
+
 ## Tech Stack
 - **Frontend:** HTML5, CSS3, JavaScript (ES6)
 - **Backend / Database:** Firebase Realtime Database
@@ -24,14 +33,6 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 4. Snehasis Sain
 5. Subhajit Saha
 
-## Demo
-- Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
-
-- YouTube demo video: [add link before submission]
-
-- Live app: https://subhajitsh2006-prog.github.io/canteen-token-system/app/index.html
-  
-- Staff panel: https://subhajitsh2006-prog.github.io/canteen-token-system/app/staff.html
 
 ## Project Structure
 - app/index.html - customer page (menu, get token, now serving)
