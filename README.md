@@ -3,7 +3,7 @@
 Fairness-based token/queue system for canteen rush hours — built for Iotricity Hackathon.
 
 ## Problem
-College canteens face overcrowding and chaotic first-come-first-served queues during peak lunch hours.
+Institutional canteens face severe peak-hour overcrowding due to manual, physical queuing and zero visibility into order preparation times. This lack of structure leads to chaotic crowds, lost break time, and inefficient counter management. 
 
 ## Solution
 - A web app lets users view a categorized menu (Snacks, Meals, Beverages,etc.) with live stock status
