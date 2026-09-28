@@ -12,10 +12,10 @@ College canteens face overcrowding and chaotic first-come-first-served queues du
 - A physical ESP32 + LED display board (simulated in Tinkercad) shows "Token 42 – Now Serving"
 
 ## Tech Stack
-**Frontend:** HTML5, CSS3, JavaScript (ES6)
-**Backend / Database:** Firebase Realtime Database
-**Hardware / Embedded:** ESP32 (target board for real deployment), 16x2 LCD display, Arduino C++ firmware
-**Simulation:** Tinkercad Circuits (prototyped with Arduino Uno)
+- **Frontend:** HTML5, CSS3, JavaScript (ES6)
+- **Backend / Database:** Firebase Realtime Database
+- **Hardware / Embedded:** ESP32 (target board for real deployment), 16x2 LCD display, Arduino C++ firmware
+- **Simulation:** Tinkercad Circuits (prototyped with Arduino Uno)
 
 ## Team — Nexus Syndicate
 1. Adrika Kundu
