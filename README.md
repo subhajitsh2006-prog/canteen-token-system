@@ -26,14 +26,6 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 - **Hardware / Embedded:** ESP32 (target board for real deployment), 16x2 LCD display, Arduino C++ firmware
 - **Simulation:** Tinkercad Circuits (prototyped with Arduino Uno)
 
-## Team — Nexus Syndicate
-1. Adrika Kundu
-2. Aadya Das
-3. Sayan Choudhury
-4. Snehasis Sain
-5. Subhajit Saha
-
-
 ## Project Structure
 - app/index.html - customer page (menu, get token, now serving)
 - app/staff.html - staff panel (next token, reset, stock control)
@@ -42,3 +34,10 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 
 ## How to Run
 Download the repo and open app/index.html and app/staff.html in a browser. Both connect to our Firebase Realtime Database and update live.
+
+## Team — Nexus Syndicate
+1. Adrika Kundu
+2. Aadya Das
+3. Sayan Choudhury
+4. Snehasis Sain
+5. Subhajit Saha
