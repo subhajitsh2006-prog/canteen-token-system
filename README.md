@@ -29,6 +29,10 @@ Institutional canteens face severe peak-hour overcrowding due to manual, physica
 
 - YouTube demo video: [add link before submission]
 
+- Live app: https://subhajitsh2006-prog.github.io/canteen-token-system/app/index.html
+  
+- Staff panel: https://subhajitsh2006-prog.github.io/canteen-token-system/app/staff.html
+
 ## Project Structure
 - app/index.html - customer page (menu, get token, now serving)
 - app/staff.html - staff panel (next token, reset, stock control)
