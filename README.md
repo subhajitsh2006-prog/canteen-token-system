@@ -25,5 +25,5 @@ College canteens face overcrowding and chaotic first-come-first-served queues du
 
 ## Demo
 - Tinkercad circuit: https://www.tinkercad.com/things/4lsVAhrudrO/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=z0-4HrJd3bBuFtiwTQ00p-ReyuXu932Nv8ZT7HZqdSU
-- 
+
 - YouTube demo video: [add link before submission]
